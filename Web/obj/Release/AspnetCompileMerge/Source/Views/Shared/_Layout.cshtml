@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    @Html.RenderStyles(StyleFiles.Bootstrap, StyleFiles.FontAwesome, StyleFiles.Ionicons, StyleFiles.Style)
+    @RenderSection("styles", false)
+
+    <!--[if lt IE 9]>
+        @Html.RenderScripts(ScriptFiles.Html5shiv, ScriptFiles.Respond)
+    <![endif]-->
+
+</head>
+<body>
+    <div class="container body-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2">
+                    <a href="#" class="list-group-item active">
+                        全部
+                    </a>
+                    <a href="@Url.Action("Index","Json")" class="list-group-item">
+                        Json工具
+                    </a>
+                    @*<a href="@Url.Action("list","Article",new {categoryid=2})" class="list-group-item">技术总结</a>
+                        <a href="@Url.Action("list","Article",new {categoryid=3})" class="list-group-item">bug处理</a>*@
+                </div>
+                <div class="col-sm-10">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+@Html.RenderScripts(ScriptFiles.Jquery, ScriptFiles.Bootstrap, ScriptFiles.Layer, ScriptFiles.Common)
+@RenderSection("scripts", required: false)
+</html>

@@ -1,0 +1,34 @@
+﻿<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Json格式化
+        </div>
+        <div class="panel-body">
+            <textarea id="content" style="width:100%;height:500px;"></textarea>
+        </div>
+    </div>
+    <button id="btn_save" class="btn btn-sm btn-primary">格式化</button>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#btn_save").click(function () {
+                var content = $("#content").val();
+                if (content == "") {
+                    layer.msg("内容不能为空！");
+                }
+                else {
+                    var url = "@Url.Action("jsonFormat","json")";
+                    $.post(url, { content: content }, function (data) {
+                        if (data.Status == 200) {
+                            $("#content").val(data.Data);
+                        }
+                        else {
+                            layer.alert(data.Message);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
