@@ -19,11 +19,11 @@ function () {
         });
     }
 });
-$(function() {
-    //checkbox样式使用icheck优化
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-        checkboxClass: 'icheckbox_flat-green',
-        radioClass: 'iradio_flat-green'
-    });
-});
+//$(function() {
+//    //checkbox样式使用icheck优化
+//    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+//        checkboxClass: 'icheckbox_flat-green',
+//        radioClass: 'iradio_flat-green'
+//    });
+//});
 
