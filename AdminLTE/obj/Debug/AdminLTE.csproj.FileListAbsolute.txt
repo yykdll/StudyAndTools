@@ -73,8 +73,6 @@ E:\测试demo\StudyAndTools\AdminLTE\bin\Microsoft.Practices.Unity.RegistrationB
 E:\测试demo\StudyAndTools\AdminLTE\bin\Microsoft.Web.Infrastructure.dll
 E:\测试demo\StudyAndTools\AdminLTE\bin\MvcBase.dll
 E:\测试demo\StudyAndTools\AdminLTE\bin\Newtonsoft.Json.dll
-E:\测试demo\StudyAndTools\AdminLTE\bin\Oracle.ManagedDataAccess.dll
-E:\测试demo\StudyAndTools\AdminLTE\bin\Oracle.ManagedDataAccess.EntityFramework.dll
 E:\测试demo\StudyAndTools\AdminLTE\bin\System.Net.Http.Formatting.dll
 E:\测试demo\StudyAndTools\AdminLTE\bin\System.Web.Helpers.dll
 E:\测试demo\StudyAndTools\AdminLTE\bin\System.Web.Http.dll
@@ -119,3 +117,5 @@ E:\测试demo\StudyAndTools\AdminLTE\bin\zh-Hans\System.Web.Http.WebHost.resourc
 E:\测试demo\StudyAndTools\AdminLTE\obj\Debug\AdminLTE.csprojResolveAssemblyReference.cache
 E:\测试demo\StudyAndTools\AdminLTE\obj\Debug\AdminLTE.dll
 E:\测试demo\StudyAndTools\AdminLTE\obj\Debug\AdminLTE.pdb
+E:\测试demo\StudyAndTools\AdminLTE\bin\MySql.Data.dll
+E:\测试demo\StudyAndTools\AdminLTE\bin\MySql.Data.Entity.EF6.dll

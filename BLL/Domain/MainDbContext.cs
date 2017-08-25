@@ -20,7 +20,7 @@ namespace AdminLTE.Domain
 {
     public partial class MainDbContext : FrameworkContext
     {
-        public MainDbContext() : base("DefaultConnection") { }
+        public MainDbContext() : base("SatContext") { }
 
         static MainDbContext()
         {

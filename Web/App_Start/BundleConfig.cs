@@ -77,7 +77,7 @@ namespace System.Web
         [Resource("~/Scripts/Html5shiv", "~/Content/bootstrap/js/html5shiv.min.js")]
         Html5shiv,
 
-        [Resource("~/Scripts/Layer", "~/Content/layer/layer.js")]
+        [Resource("~/Content/layer/Layer", "~/Content/layer/layer.js")]
         Layer,
         [Resource("~/Scripts/JqueryValidate",
             "~/Content/js/jquery.validate.min.js", OrderID = 1
@@ -104,7 +104,6 @@ namespace System.Web
 
         [Resource("~/Styles/FontAwesome", "~/Content/font-awesome-4.7.0/css/font-awesome.min.css")]
         FontAwesome,
-
         [Resource("~/Styles/Ionicons", "~/Content/css/ionicons.min.css")]
         Ionicons,
         [Resource("~/Styles/Style", "~/Content/css/style.css")]

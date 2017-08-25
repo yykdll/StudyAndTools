@@ -6,17 +6,17 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\发布\studyandtools.Web\2017-08-24</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\发布\studyandtools.Web\2017-08-24-3</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>06/05/2017 15:52:28</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/24/2017 11:30:31</publishTime>
+      <publishTime>08/24/2017 12:09:37</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/24/2017 11:30:31</publishTime>
+      <publishTime>08/24/2017 12:09:37</publishTime>
     </File>
     <File Include="bin/BLL.dll">
       <publishTime>08/24/2017 11:30:28</publishTime>
@@ -79,7 +79,7 @@
       <publishTime>06/05/2017 16:39:01</publishTime>
     </File>
     <File Include="bin/Web.dll">
-      <publishTime>08/24/2017 11:30:28</publishTime>
+      <publishTime>08/24/2017 12:09:34</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/05/2017 15:52:28</publishTime>
@@ -511,7 +511,7 @@
       <publishTime>08/23/2017 13:24:02</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/24/2017 11:30:30</publishTime>
+      <publishTime>08/24/2017 12:09:35</publishTime>
     </File>
     <File Include="Scripts/jquery-1.8.2.js">
       <publishTime>08/21/2017 16:37:44</publishTime>
@@ -565,7 +565,7 @@
       <publishTime>08/21/2017 16:37:39</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/24/2017 11:26:56</publishTime>
+      <publishTime>08/24/2017 12:09:25</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>08/23/2017 09:35:48</publishTime>
