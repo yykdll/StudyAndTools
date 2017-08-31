@@ -119,3 +119,7 @@ E:\测试demo\StudyAndTools\AdminLTE\obj\Debug\AdminLTE.dll
 E:\测试demo\StudyAndTools\AdminLTE\obj\Debug\AdminLTE.pdb
 E:\测试demo\StudyAndTools\AdminLTE\bin\MySql.Data.dll
 E:\测试demo\StudyAndTools\AdminLTE\bin\MySql.Data.Entity.EF6.dll
+E:\测试demo\StudyAndTools\AdminLTE\bin\PagedList.dll
+E:\测试demo\StudyAndTools\AdminLTE\bin\PagedList.Mvc.dll
+E:\测试demo\StudyAndTools\AdminLTE\bin\PagedList.xml
+E:\测试demo\StudyAndTools\AdminLTE\bin\PagedList.Mvc.xml

@@ -19,6 +19,12 @@ namespace AdminLTE.Domain
     [Table("ARTICLE")]
     public class Article
     {
+        public Article()
+        {
+            this.ViewCount = 0;
+            this.ID = Guid.NewGuid().ToString();
+            this.CreateTime = DateTime.Now;
+        }
         /// <summary>
         /// 文章ID
         /// </summary>
@@ -84,8 +90,8 @@ namespace AdminLTE.Domain
         /// 父分类ID
         /// </summary>
         [DisplayName("父分类ID")]
-        [Column("PARENTLASSIFYID")]
-        public String ParentlassifyID { get; set; }
+        [Column("PARENTCLASSIFYID")]
+        public String ParentClassifyID { get; set; }
         /// <summary>
         /// 是否发布
         /// </summary>
@@ -129,9 +135,21 @@ namespace AdminLTE.Domain
         [DisplayName("最后编辑时间")]
         [Column("LASTEDITTIME")]
         public DateTime? LastEditTime { get; set; }
+
+        /// <summary>
+        /// 是否置顶
+        /// </summary>
+        [DisplayName("是否置顶")]
+        [Column("ISTOP")]
+        public Boolean? IsTop { get; set; }
+
+        [ForeignKey("ClassifyID")]
+        public virtual ArticleClassify ArticleClassify { get; set; }
+        [ForeignKey("ParentClassifyID")]
+        public virtual ArticleClassify ParentArticleClassify { get; set; }
 }
 
-    namespace services
+    namespace Services
     {
         public interface IArticleService : IServiceBase<Article>{}
 

@@ -29,5 +29,10 @@ namespace AdminLTE.Enum
         /// </summary>
         [Description("删除")]
         Delete = 16,
+        /// <summary>
+        /// 发布
+        /// </summary>
+        [Description("发布")]
+        Publish = 32,
     }
 }
