@@ -39,7 +39,7 @@ namespace AdminLTE.Controllers
         public ActionResult Edit(string ID, string parentID)
         {
             var o_menu = _menuService.SingleAndInit(ID);
-            if (!string.IsNullOrEmpty(parentID) && parentID != "0" && parentID != "undifined") o_menu.ParentID = parentID;
+            if (!string.IsNullOrEmpty(parentID) && parentID != "0" && parentID != "undefined") o_menu.ParentID = parentID;
             ViewBag.Permissions = typeof(PermissionType).GetEnumListItem();
             if (string.IsNullOrEmpty(ID))
             {
@@ -97,7 +97,7 @@ namespace AdminLTE.Controllers
             ReturnResult result = new ReturnResult();
             try
             {
-                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID!="undifined")
+                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID!="undefined")
                 { 
                 _menuService.Delete(s => s.ParentID == ID);
                 _permissionService.Delete(s => s.MenuID == ID || s.Menu.Parent.ID == ID);

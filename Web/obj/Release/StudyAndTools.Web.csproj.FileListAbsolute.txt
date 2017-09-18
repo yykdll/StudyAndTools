@@ -57,3 +57,5 @@ E:\测试demo\StudyAndTools\Web\bin\zh-Hans\System.Web.Providers.resources.dll
 E:\测试demo\StudyAndTools\Web\obj\Release\StudyAndTools.Web.csprojResolveAssemblyReference.cache
 E:\测试demo\StudyAndTools\Web\obj\Release\Web.dll
 E:\测试demo\StudyAndTools\Web\obj\Release\Web.pdb
+E:\测试demo\StudyAndTools\Web\bin\MySql.Data.dll
+E:\测试demo\StudyAndTools\Web\bin\MySql.Data.Entity.EF6.dll

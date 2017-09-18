@@ -1,0 +1,196 @@
+﻿@model List<AdminLTE.Domain.Article>
+@{
+    ViewBag.Title = "文章管理";
+    bool canCreate = Html.CheckRole(AdminLTE.Enum.PermissionType.Create);
+    bool canEdit = Html.CheckRole(AdminLTE.Enum.PermissionType.Edit);
+    bool canDel = Html.CheckRole(AdminLTE.Enum.PermissionType.Delete);
+    bool canPublish = Html.CheckRole(AdminLTE.Enum.PermissionType.Publish);
+
+
+    string parentClassifyID = Request.QueryString["parentClassifyID"];
+    string classifyID = Request.QueryString["classifyID"];
+    var topRootList = MvcBase.Unity.Get<AdminLTE.Domain.Services.IArticleClassifyService>().DropDownList(null);
+    var topList = MvcBase.Unity.Get<AdminLTE.Domain.Services.IArticleClassifyService>().DropDownList(null);
+}
+@*@section scripts{
+        <script type="text/javascript">
+            function del(id) {
+                changeStatus("确定删除？", "Delete.ashx", { ArticleID: id });
+            }
+            function undoDel(id) {
+                changeStatus("确定撤销删除？", "UndoDel.ashx", { ArticleID: id });
+            }
+            function publish(id) {
+                changeStatus("确定发布？", "publish.ashx", { ArticleID: id });
+            }
+            function undoPublish(id) {
+                changeStatus("确定下架？", "Undopublish.ashx", { ArticleID: id });
+            }
+            function placedTop(id, tid) {
+                changeStatus("确定置顶？", "PlacedTop.ashx", { ArticleID: id, topicID: tid });
+            }
+
+            function changeStatus(confirmText, url, data) {
+                if (confirm(confirmText)) {
+                    $.post("/BSArticleManager/ArticleManage/" + url + "?rnd=" + Math.random(), data, function (r) {
+                        if (r.Status == 200) {
+                            window.location.reload();
+                        } else alert(r.Message);
+                    });
+                }
+            }
+            $(document).ready(function () {
+                $("#TPID").change(function () {
+                    var id = $(this).val();
+                    id = id == "0" ? "-1" : id;
+                    $.post("/Public/TopicList.ashx?rnd=" + Math.random(), { FID: id, SystemType: "@((int)CarCMS.Enums.SystemType.BusinessSchool)" }, function (r) {
+
+                        if (r.Status == 200) {
+                            $("#TID").empty();
+                            var default_option = $("<option></option>");
+                            default_option.attr("value", "");
+                            default_option.text("请选择专题");
+                            $("#TID").append(default_option);
+
+                            $.each(r.Data, function (i, item) {
+                                var option = $("<option></option>");
+                                option.attr("value", item.Value);
+                                option.text(item.Text);
+                                $("#TID").append(option);
+                            });
+                        } else alert(r.Message);
+                    });
+
+
+                });
+            });
+        </script>
+
+    }*@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            文章列表
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">文章分类管理</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <br />
+                                    <div class="panel panel-primary">
+                                        <div class="panel-body">
+                                            <form class="form-inline">
+                                                @Html.DropDownList("TPID", topRootList, parentClassifyID + "", new SelectListItem() { Text = "请选择一级栏目", Value = "" }, new { @class = "form-control" })
+                                                @Html.DropDownList("TID", topList, classifyID + "", new SelectListItem() { Text = "请选择二级栏目", Value = "" }, new { @class = "form-control" })
+                                                @Html.TextBox("keyword", Request.QueryString["keyword"], new { @class = "form-control", placeholder = "关键字" })
+                                                @*@Html.SubmitButton_SM(true, "搜索")*@
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr >
+                                                <th class="text-center">
+                                                    文章标题
+                                                </th>
+                                                <th class="text-center">
+                                                    分类
+                                                </th>
+                                                <th class="text-center">
+                                                    描述
+                                                </th>
+                                                <th class="text-center" width="60">
+                                                    浏览量
+                                                </th>
+                                                <th class="text-center" width="60">
+                                                    创建人
+                                                </th>
+                                                <th class="text-center" width="85">
+                                                    创建时间
+                                                </th>
+                                                <th class="text-center" width="85">
+                                                    发布时间
+                                                </th>
+
+                                                <th class="text-center" width="245">
+                                                    @if (canCreate)
+                                                    {
+                                                        <button type="button" id="btnAddArticle" class="btn  btn-success "><i class="fa fa-plus"></i> 新增文章</button>
+                                                    }
+                                                    @*@Html.AddLinkButton_SM(AdminLTE.Enum.PermissionType.Create, "添加", "/BSArticleManager/ArticleManage/Edit.aspx?TopicID=" + TID)
+                                                        @Html.IconLinkButton(AdminLTE.Enum.PermissionType.Delete, "btn btn-primary btn-sm", "glyphicon glyphicon-folder-close", "回收站", "/BSArticleManager/ArticleManage/Recycle.aspx?TopicID=" + TID)*@
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.Title</td>
+                                                    <td>@(item.ParentArticleClassify != null ? item.ParentArticleClassify.ClassifyName : "") - @(item.ArticleClassify != null ? item.ArticleClassify.ClassifyName : "")</td>
+                                                    <td>@(item.Description + "")</td>
+                                                    <td>@item.ViewCount</td>
+                                                    <td>@item.CreatorName</td>
+                                                    <td>@(item.CreateTime == null ? "" : item.CreateTime.ToString())</td>
+                                                    <td>@(item.PublishTime == null ? "" : item.PublishTime.ToString())</td>
+                                                    <td>
+                                                        @if (canEdit)
+                                                        {
+                                                            <button type="button" class="btn  btn-primary btnEdit" articleid="@item.ID"><i class="fa fa-edit"></i> 编辑</button>
+                                                        }
+                                                        @*@Html.EditLinkButton_XS(canEdit, "编辑", "/BSArticleManager/ArticleManage/Edit.aspx?articleid=" + item.ArticleID)
+                                                            @Html.DeleteJsLinkButton_XS(!item.IsDeleted.GetValueOrDefault(false) && canDel, "删除", "del(" + item.ArticleID + ");")
+                                                            @Html.JsIconLinkButton(!item.IsDeleted.GetValueOrDefault(false) && !item.IsPublished.GetValueOrDefault(false) && canPublish, "btn btn-xs btn-success", "glyphicon-arrow-up", "发布", "publish(" + item.ArticleID + ")")
+                                                            @Html.JsIconLinkButton(!item.IsDeleted.GetValueOrDefault(false) && item.IsPublished.GetValueOrDefault(false) && canPublish, "btn btn-xs btn-warning", "glyphicon-arrow-down", "下架", "undoPublish(" + item.ArticleID + ")")
+                                                            @Html.JsIconLinkButton(!item.IsDeleted.GetValueOrDefault(false) && item.IsPublished.GetValueOrDefault(false) && canPublish && !(item.PlacedTopFlag ?? false), "btn btn-xs btn-info", "glyphicon-arrow-up", "置顶", "placedTop(" + item.ArticleID + "," + item.TopicID + ")")
+                                                            @Html.JsIconLinkButton(!item.IsDeleted.GetValueOrDefault(false) && item.IsPublished.GetValueOrDefault(false) && canPublish && (item.PlacedTopFlag ?? false), "btn btn-xs btn-warning", "glyphicon-arrow-down", "不置顶", "undoPlacedTop(" + item.ArticleID + ")")*@
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <div class="text-center">
+                                        @*共 @(Model.TotalItemCount) 条数据。共 @(Model.TotalPageCount) 页，每页 @(Model.PageSize) 条。*@
+                                    </div>
+                                    @*@Html.Pager(Model)*@
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $("#btnAddArticle").click(function () {
+            var url = "@Url.Action("Edit", "Article")";
+            window.location.href = url;
+        });
+        $(".btnEdit").click(function () {
+            var url = "@Url.Action("Edit", "Article")" + "?ID=" + $(this).attr("articleid");
+            window.location.href = url;
+        });
+
+    </script>
+}

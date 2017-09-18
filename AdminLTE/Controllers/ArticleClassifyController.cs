@@ -39,7 +39,7 @@ namespace AdminLTE.Controllers
         public ActionResult Edit(string ID, string parentID)
         {
             var o_articleClassify = _articleClassifyService.SingleAndInit(ID);
-            if (!string.IsNullOrEmpty(parentID) && parentID != "0" && parentID != "undifined") o_articleClassify.ParentClassifyID = parentID;
+            if (!string.IsNullOrEmpty(parentID) && parentID != "0" && parentID != "undefined") o_articleClassify.ParentClassifyID = parentID;
             //ViewBag.Permissions = typeof(PermissionType).GetEnumListItem();
             return View(o_articleClassify);
         }
@@ -88,7 +88,7 @@ namespace AdminLTE.Controllers
             ReturnResult result = new ReturnResult();
             try
             {
-                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID != "undifined")
+                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID != "undefined")
                 {
                     var list_articleClassify=_articleClassifyService.List(s => s.ParentClassifyID == ID);
                     foreach (var item in list_articleClassify)

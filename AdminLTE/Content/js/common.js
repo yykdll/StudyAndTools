@@ -2,7 +2,7 @@
 $("button[type='submit']")
 .on("click",
 function () {
-    if ($(this).attr("data-loading-text")!="undifined") {
+    if ($(this).attr("data-loading-text")!="undefined") {
         $(this).button('loading').delay(1000).queue(function () {
             $(this).button('reset');
             $(this).dequeue();
@@ -12,7 +12,7 @@ function () {
 $("input[type='submit']")
 .on("click",
 function () {
-    if ($(this).attr("data-loading-text") != "undifined") {
+    if ($(this).attr("data-loading-text") != "undefined") {
         $(this).button('loading').delay(1000).queue(function () {
             $(this).button('reset');
             $(this).dequeue();

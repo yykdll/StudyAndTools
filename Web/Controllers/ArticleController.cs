@@ -22,7 +22,7 @@ namespace Web.Controllers
         /// <returns></returns>
         public ActionResult List()
         {
-            var list_Article = _articleService.List(m => m.IsPublish.GetValueOrDefault(false) && !m.IsDelete.GetValueOrDefault(false)).ToList();
+            var list_Article = _articleService.List(m => m.IsPublish==true&& m.IsDelete!=true).OrderByDescending(m=>m.PublishTime).ToList();
             return View(list_Article);
         }
     }

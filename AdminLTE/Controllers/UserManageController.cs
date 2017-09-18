@@ -85,7 +85,7 @@ namespace AdminLTE.Controllers
             ReturnResult result = new ReturnResult();
             try
             {
-                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID != "undifined")
+                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID != "undefined")
                 {
                     _employeeService.Delete(s => s.ID == ID);
                     _permissionService.Delete(m=>m.UserID==ID);
@@ -118,7 +118,7 @@ namespace AdminLTE.Controllers
             ReturnResult result = new ReturnResult();
             try
             {
-                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID != "undifined")
+                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID != "undefined")
                 {
                     var o_employee=_employeeService.Single(s => s.ID == ID);
                     if (o_employee == null)
@@ -157,7 +157,7 @@ namespace AdminLTE.Controllers
             ReturnResult result = new ReturnResult();
             try
             {
-                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID != "undifined")
+                if (!string.IsNullOrEmpty(ID) && ID != "0" && ID != "undefined")
                 {
                     var o_employee = _employeeService.Single(s => s.ID == ID);
                     if (o_employee == null)

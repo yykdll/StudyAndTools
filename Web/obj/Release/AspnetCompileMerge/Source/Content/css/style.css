@@ -21,3 +21,8 @@ label.error {
     background: url("/Content/image/bg3.jpg") no-repeat;
     background-size: 100%;
 }
+
+.articlePanel .description {
+    font-size: 12px;
+    color: #ccc;
+}

@@ -1,0 +1,62 @@
+﻿@model AdminLTE.Domain.ArticleClassify
+@{
+    ViewBag.Title = "编辑文章分类";
+    Layout = "~/Views/Shared/_LayoutClean.cshtml";
+}
+@using (Ajax.BeginForm("Save", "ArticleClassify", new AjaxOptions { HttpMethod = "Post", OnSuccess = "doSuccess" }, new { @class = "form-horizontal", @role = "form" }))
+{
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.ParentClassifyID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.ClassifyName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <span style="color: red;">*</span>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.ClassifyName, new { @class = "form-control", placeholder = "请输入文章分类名称" })
+            @Html.ValidationMessageFor(m => m.ClassifyName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsDelete, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-sm-10">
+            @Html.CheckBox(model => model.IsDelete, "", new { @class = "flat-red" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrderID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.OrderID, new { @class = "form-control", placeholder = "请输入文章分类顺序" })
+            @Html.ValidationMessageFor(m => m.OrderID)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">保存</button>
+        </div>
+    </div>
+}
+@section scripts
+{
+    @Html.RenderScripts(ScriptFiles.JqueryValidate)
+    <script type="text/javascript">
+        function doSuccess(data) {
+            var index=layer.alert(data.Message,
+                {
+                    yes: function () {
+                        if (data.Status == 200) {
+                            window.parent.location.reload();
+                        } else {
+                            layer.close(index);
+                        }
+
+                } }
+        );
+
+    }
+        //checkbox样式使用icheck优化
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass: 'iradio_flat-green'
+        });
+    </script>
+
+}

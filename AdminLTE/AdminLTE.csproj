@@ -278,6 +278,7 @@
     <Content Include="Content\js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Content\js\jquery.validate.min.js" />
     <Content Include="Content\js\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\js\wangEditor.min.js" />
     <Content Include="Content\layer\layer.js" />
     <Content Include="Content\layer\mobile\layer.js" />
     <Content Include="Content\layer\mobile\need\layer.css" />
@@ -1243,6 +1244,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Article\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\adminPublish.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

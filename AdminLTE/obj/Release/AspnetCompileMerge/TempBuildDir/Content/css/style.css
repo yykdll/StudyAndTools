@@ -1,0 +1,23 @@
+﻿input.error { 
+    border: 1px solid red; 
+    background-color:#ffeeee;
+}
+label.error {
+
+  padding-left: 16px;
+
+  padding-bottom: 2px;
+
+  font-weight: bold;
+
+  color: #EA5200;
+}
+.field-validation-error span {
+    padding-left: 6px;
+    color: red;
+}
+/*登录页背景图*/
+.bg-tec {
+    background: url("/Content/image/bg3.jpg") no-repeat;
+    background-size: 100%;
+}

@@ -6,20 +6,20 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\发布\studyandtools.Web\2017-08-24-3</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\发布\studyandtools.Web\2017-09-14</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>06/05/2017 15:52:28</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/24/2017 12:09:37</publishTime>
+      <publishTime>09/14/2017 10:52:25</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/24/2017 12:09:37</publishTime>
+      <publishTime>09/14/2017 10:52:25</publishTime>
     </File>
     <File Include="bin/BLL.dll">
-      <publishTime>08/24/2017 11:30:28</publishTime>
+      <publishTime>09/14/2017 10:51:43</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/05/2017 17:21:00</publishTime>
@@ -41,6 +41,12 @@
     </File>
     <File Include="bin/MvcBase.dll">
       <publishTime>08/24/2017 11:30:27</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>08/25/2017 17:16:32</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.EF6.dll">
+      <publishTime>08/25/2017 17:16:41</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>06/05/2017 15:52:28</publishTime>
@@ -79,7 +85,7 @@
       <publishTime>06/05/2017 16:39:01</publishTime>
     </File>
     <File Include="bin/Web.dll">
-      <publishTime>08/24/2017 12:09:34</publishTime>
+      <publishTime>09/14/2017 10:52:22</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>06/05/2017 15:52:28</publishTime>
@@ -181,7 +187,7 @@
       <publishTime>08/21/2017 17:04:48</publishTime>
     </File>
     <File Include="Content/css/style.css">
-      <publishTime>08/21/2017 17:04:48</publishTime>
+      <publishTime>09/14/2017 09:06:49</publishTime>
     </File>
     <File Include="Content/font-awesome-4.7.0/css/font-awesome.css">
       <publishTime>08/21/2017 17:04:48</publishTime>
@@ -508,10 +514,10 @@
       <publishTime>08/21/2017 16:37:45</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>08/23/2017 13:24:02</publishTime>
+      <publishTime>09/14/2017 08:55:08</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/24/2017 12:09:35</publishTime>
+      <publishTime>09/14/2017 10:52:23</publishTime>
     </File>
     <File Include="Scripts/jquery-1.8.2.js">
       <publishTime>08/21/2017 16:37:44</publishTime>
@@ -555,6 +561,9 @@
     <File Include="Scripts/_references.js">
       <publishTime>08/21/2017 16:37:46</publishTime>
     </File>
+    <File Include="Views/Article/List.cshtml">
+      <publishTime>09/14/2017 10:30:04</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>08/24/2017 11:28:57</publishTime>
     </File>
@@ -565,7 +574,7 @@
       <publishTime>08/21/2017 16:37:39</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/24/2017 12:09:25</publishTime>
+      <publishTime>08/31/2017 15:01:06</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>08/23/2017 09:35:48</publishTime>
@@ -574,7 +583,7 @@
       <publishTime>08/21/2017 16:37:39</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/24/2017 11:30:29</publishTime>
+      <publishTime>09/14/2017 10:52:22</publishTime>
     </File>
   </ItemGroup>
 </Project>

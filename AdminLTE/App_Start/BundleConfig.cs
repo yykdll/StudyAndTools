@@ -77,7 +77,7 @@ namespace System.Web
         [Resource("~/Scripts/Html5shiv", "~/Content/bootstrap/js/html5shiv.min.js")]
         Html5shiv,
 
-        [Resource("~/Scripts/Layer", "~/Content/layer/layer.js")]
+        [Resource("~/Content/layer/Layer", "~/Content/layer/layer.js")]
         Layer,
 
         [Resource("~/Scripts/App", "~/Content/dist/js/app.min.js")]
@@ -106,6 +106,8 @@ namespace System.Web
         FastClick,
         [Resource("~/Scripts/Common", "~/Content/js/common.js")]
         Common,
+        [Resource("~/Scripts/WangEditor", "~/Content/js/wangEditor.min.js")]
+        WangEditor
     }
 
     /// <summary>

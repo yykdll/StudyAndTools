@@ -1,0 +1,214 @@
+﻿@model AdminLTE.Domain.Article
+
+@{
+    ViewBag.Title = "编辑文章";
+    //Layout = "~/Views/Shared/_LayoutClean.cshtml";
+    //var dropDownList = ViewBag.CategoryList as IEnumerable<SelectListItem>;
+    var rootListItem = MvcBase.Unity.Get<AdminLTE.Domain.Services.IArticleClassifyService>().DropDownList(null);
+    var listItem = MvcBase.Unity.Get<AdminLTE.Domain.Services.IArticleClassifyService>().DropDownList(Model.ParentClassifyID ?? rootListItem.FirstOrDefault().Value);
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            文章编辑
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">文章编辑</h3>
+                    </div>
+                    <div class="box-body">
+                        @using (Ajax.BeginForm("save", "Article", new AjaxOptions { OnBegin = "doBegin", OnSuccess = "doSuccess" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.ID)
+
+                                <div class="form-group">
+                                    <div class="col-md-2 control-label">
+                                        <label class="control-label">分类</label>
+                                        <span class="red">*</span>
+                                    </div>
+                                    <div class="col-md-10 form-inline">
+                                        @Html.DropDownList("ParentClassifyID", rootListItem, new { htmlAttributes = new { @class = "form-control required" } })
+                                        @Html.DropDownList("ClassifyID", listItem, new { htmlAttributes = new { @class = "form-control required" } })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(model => model.CreatorName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.CreatorName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CreatorName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(model => model.CreateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.CreateTime, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CreateTime, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div id="editor"></div>
+                                        @Html.HiddenFor(model => model.Content, htmlAttributes: new { @class = "form-control", @style = "width:100%;height:400px;" })
+                                        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(model => model.CreatorName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.CreatorName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CreatorName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CreatorID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.CreatorID, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CreatorID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ReadCount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ReadCount, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ReadCount, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.IsDeleted)
+                                                @Html.ValidationMessageFor(model => model.IsDeleted, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DeleteTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.DeleteTime, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.DeleteTime, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.IsPublic, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.IsPublic)
+                                                @Html.ValidationMessageFor(model => model.IsPublic, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>*@
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input id="btn_save" type="submit" value="保存" data-loading-text="保存中..." class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@section scripts{
+    @Html.RenderScripts(ScriptFiles.JqueryValidate, ScriptFiles.WangEditor)
+    <script type="text/javascript">
+
+        ///初始化wangEditor
+        var E = window.wangEditor;
+        var editor = new E('#editor');
+        editor.create();
+        editor.txt.html("@Html.Raw(Model.Content)");
+
+        $("#btn_save").click(function () {
+            $("#Content").val(editor.txt.html());
+        });
+
+        var doBegin = function() {
+
+        }
+        var doSuccess = function(data) {
+            var index = layer.alert(data.Message,
+            {
+                yes: function() {
+                    if (data.Status == 200) {
+                        window.location.href = "@Url.Action("Index", "Article")";
+                    } else {
+                        layer.close(index);
+                    }
+
+                }
+            });
+        }
+
+        $("#ParentClassifyID")
+            .change(function() {
+                var id = $(this).val();
+                id = id == "0" ? "-1" : id;
+                $.post("/Public/TopicList?rnd=" + Math.random(),
+                    { PID: id },
+                    function(r) {
+                        if (r.Status == 200) {
+                            $("#ClassifyID").empty();
+                            var default_option = $("<option></option>");
+                            default_option.attr("value", "");
+                            default_option.text("请选择二级分类");
+                            $("#ClassifyID").append(default_option);
+
+                            $.each(r.Data,
+                                function(i, item) {
+                                    var option = $("<option></option>");
+                                    option.attr("value", item.Value);
+                                    option.text(item.Text);
+                                    $("#ClassifyID").append(option);
+                                });
+                        } else alert(r.Message);
+                    });
+            });
+
+    </script>
+}
