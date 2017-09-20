@@ -99,3 +99,4 @@ E:\测试demo\StudyAndTools\MvcBase\bin\Debug\zh-Hans\System.Web.WebPages.Deploy
 E:\测试demo\StudyAndTools\MvcBase\bin\Debug\zh-Hans\System.Web.WebPages.Razor.resources.dll
 E:\测试demo\StudyAndTools\MvcBase\obj\Debug\MvcBase.dll
 E:\测试demo\StudyAndTools\MvcBase\obj\Debug\MvcBase.pdb
+E:\测试demo\StudyAndTools\MvcBase\obj\Debug\MvcBase.csprojResolveAssemblyReference.cache

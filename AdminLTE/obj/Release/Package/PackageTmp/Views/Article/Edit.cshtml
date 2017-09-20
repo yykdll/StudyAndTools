@@ -80,7 +80,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        <div id="editor"></div>
+                                        <div id="editor">@Html.Raw(Model.Content)</div>
                                         @Html.HiddenFor(model => model.Content, htmlAttributes: new { @class = "form-control", @style = "width:100%;height:400px;" })
                                         @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
                                     </div>
@@ -162,19 +162,19 @@
         var E = window.wangEditor;
         var editor = new E('#editor');
         editor.create();
-        editor.txt.html("@Html.Raw(Model.Content)");
+        @*editor.txt.html("@Html.Raw(Model.Content)");*@
 
         $("#btn_save").click(function () {
             $("#Content").val(editor.txt.html());
         });
 
-        var doBegin = function() {
+        var doBegin = function () {
 
         }
-        var doSuccess = function(data) {
+        var doSuccess = function (data) {
             var index = layer.alert(data.Message,
             {
-                yes: function() {
+                yes: function () {
                     if (data.Status == 200) {
                         window.location.href = "@Url.Action("Index", "Article")";
                     } else {
@@ -186,12 +186,12 @@
         }
 
         $("#ParentClassifyID")
-            .change(function() {
+            .change(function () {
                 var id = $(this).val();
                 id = id == "0" ? "-1" : id;
                 $.post("/Public/TopicList?rnd=" + Math.random(),
                     { PID: id },
-                    function(r) {
+                    function (r) {
                         if (r.Status == 200) {
                             $("#ClassifyID").empty();
                             var default_option = $("<option></option>");
@@ -200,7 +200,7 @@
                             $("#ClassifyID").append(default_option);
 
                             $.each(r.Data,
-                                function(i, item) {
+                                function (i, item) {
                                     var option = $("<option></option>");
                                     option.attr("value", item.Value);
                                     option.text(item.Text);

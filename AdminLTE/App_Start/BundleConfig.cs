@@ -115,10 +115,10 @@ namespace System.Web
     /// </summary>
     public enum StyleFiles
     {
-        [Resource("~/Styles/Bootstrap", "~/Content/bootstrap/css/bootstrap.min.css")]
+        [Resource("~/Content/bootstrap/css/Bootstrap", "~/Content/bootstrap/css/bootstrap.min.css")]
         Bootstrap,
 
-        [Resource("~/Styles/FontAwesome", "~/Content/font-awesome-4.7.0/css/font-awesome.min.css")]
+        [Resource("~/Content/font-awesome-4.7.0/css/FontAwesome", "~/Content/font-awesome-4.7.0/css/font-awesome.min.css")]
         FontAwesome,
 
         [Resource("~/Styles/Ionicons", "~/Content/css/ionicons.min.css")]

@@ -39,8 +39,11 @@ namespace AdminLTE.Controllers
         public ActionResult Edit(string ID, string parentID)
         {
             var o_articleClassify = _articleClassifyService.SingleAndInit(ID);
-            if (!string.IsNullOrEmpty(parentID) && parentID != "0" && parentID != "undefined") o_articleClassify.ParentClassifyID = parentID;
-            //ViewBag.Permissions = typeof(PermissionType).GetEnumListItem();
+            if (!string.IsNullOrEmpty(parentID) && parentID != "0" && parentID != "undefined")
+            { 
+                o_articleClassify.ParentClassifyID = parentID;
+            }
+            _articleClassifyService.ClearCache();//编辑文章分类之后清除缓存
             return View(o_articleClassify);
         }
         /// <summary>
@@ -62,6 +65,7 @@ namespace AdminLTE.Controllers
                     _dbTool.Commit();
                     result.Status = 200;
                     result.Message = "保存成功!";
+                    _articleClassifyService.ClearCache();//编辑文章分类之后清除缓存
                 }
                 catch (Exception ex)
                 {
@@ -102,6 +106,7 @@ namespace AdminLTE.Controllers
                     _dbTool.Commit();
                     result.Status = 200;
                     result.Message = "删除成功";
+                    _articleClassifyService.ClearCache();//编辑文章分类之后清除缓存
                 }
                 else
                 {
